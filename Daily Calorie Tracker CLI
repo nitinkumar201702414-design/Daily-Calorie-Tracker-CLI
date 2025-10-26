@@ -1,0 +1,94 @@
+# ============================================
+# Project Title : Daily Calorie Tracker CLI
+# Name          : [Your Name Here]
+# Date          : [Enter Date]
+# Course        : Programming for Problem Solving using Python
+# ============================================
+
+# Welcome Message
+print("====================================")
+print("   Welcome to Daily Calorie Tracker  ")
+print("====================================")
+print("This tool helps you record your meals, calculate total calories,")
+print("compare with your daily limit, and optionally save your report.\n")
+
+# -----------------------------
+# Task 2: Input & Data Collection
+# -----------------------------
+
+# Ask user how many meals they want to enter
+num_meals = int(input("How many meals do you want to log today? "))
+
+# Initialize lists
+meals = []
+calories = []
+
+# Loop for data entry
+for i in range(num_meals):
+    print(f"\nMeal {i+1}:")
+    meal_name = input("Enter meal name: ")
+    cal_amount = float(input("Enter calories for this meal: "))
+    meals.append(meal_name)
+    calories.append(cal_amount)
+
+# -----------------------------
+# Task 3: Calorie Calculations
+# -----------------------------
+total_calories = sum(calories)
+average_calories = total_calories / len(calories)
+
+daily_limit = float(input("\nEnter your daily calorie limit: "))
+
+# -----------------------------
+# Task 4: Exceed Limit Warning System
+# -----------------------------
+if total_calories > daily_limit:
+    status = "⚠️ You have exceeded your daily calorie limit!"
+else:
+    status = "✅ Great! You are within your daily calorie limit."
+
+# -----------------------------
+# Task 5: Neatly Formatted Output
+# -----------------------------
+print("\n====================================")
+print("        DAILY CALORIE REPORT")
+print("====================================")
+print("Meal Name\tCalories")
+print("------------------------------------")
+
+for i in range(len(meals)):
+    print(f"{meals[i]:<15}\t{calories[i]}")
+
+print("------------------------------------")
+print(f"Total:\t\t{total_calories}")
+print(f"Average:\t{average_calories:.2f}")
+print("------------------------------------")
+print(status)
+
+# -----------------------------
+# Task 6 (Bonus): Save Session Log
+# -----------------------------
+save = input("\nDo you want to save this session report? (yes/no): ").lower()
+
+if save == "yes":
+    import datetime
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open("calorie_log.txt", "a") as file:
+        file.write("====================================\n")
+        file.write(f"Session Date & Time: {timestamp}\n")
+        file.write("------------------------------------\n")
+        for i in range(len(meals)):
+            file.write(f"{meals[i]:<15}\t{calories[i]}\n")
+        file.write("------------------------------------\n")
+        file.write(f"Total: {total_calories}\n")
+        file.write(f"Average: {average_calories:.2f}\n")
+        file.write(f"Daily Limit: {daily_limit}\n")
+        file.write(f"Status: {status}\n")
+        file.write("====================================\n\n")
+
+    print("✅ Session saved successfully as 'calorie_log.txt'")
+else:
+    print("❌ Session not saved.")
+
+print("\nThank you for using Daily Calorie Tracker! Stay healthy 😊")
