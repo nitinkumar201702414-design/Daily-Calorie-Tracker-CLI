@@ -43,9 +43,9 @@ daily_limit = float(input("\nEnter your daily calorie limit: "))
 # Task 4: Exceed Limit Warning System
 # -----------------------------
 if total_calories > daily_limit:
-    status = "⚠️ You have exceeded your daily calorie limit!"
+    status = "  You have exceeded your daily calorie limit!"
 else:
-    status = "✅ Great! You are within your daily calorie limit."
+    status = "   Great! You are within your daily calorie limit."
 
 # -----------------------------
 # Task 5: Neatly Formatted Output
@@ -87,8 +87,9 @@ if save == "yes":
         file.write(f"Status: {status}\n")
         file.write("====================================\n\n")
 
-    print("✅ Session saved successfully as 'calorie_log.txt'")
+    print("  Session saved successfully as 'calorie_log.txt'")
 else:
-    print("❌ Session not saved.")
+    print("  Session not saved.")
 
-print("\nThank you for using Daily Calorie Tracker! Stay healthy 😊")
+print("\nThank you for using Daily Calorie Tracker! Stay healthy  ")
+
